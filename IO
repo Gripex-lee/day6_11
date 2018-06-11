@@ -1,0 +1,51 @@
+####文件创建Output####
+FileOutputStream fos = new FileOutputStream(file);
+DataOutputStream dos = new DataOutputStream(fos);
+dos.writeUTF();
+
+####文件读取Input####
+FileInputStream fis = new FileInputStream(file);  
+DataInputStream dis = new DataInputStream(fis);
+dis.readUTF()
+####属性文件####
+
+Properties prop=new Properties();  
+//存储  
+prop.setProperty("name","root");  
+prop.setProperty("pass","123456");  
+prop.setProperty("key","value"); 
+ 
+//调试list显示在控制台上  
+//调用store存储到文件里  使用ISO-8859-1 字符编码  
+FileOutputStream fos=new FileOutputStream("D:\\test\\b.txt");  
+prop.store(fos,"name+age"); 
+
+//读取
+prop=new Properties();  
+FileInputStream fis=new FileInputStream("D:\\test\\b.txt");  
+prop.load(fis);  
+prop.list(System.out);
+
+####创建文件夹####
+
+
+
+####字节流####
+
+
+####缓存刘####
+BufferedReader bufr = null;  
+//写文件流的缓存  
+BufferedWriter bufw = null;  
+      try {
+          bufr = new BufferedReader(new FileReader("D:/BufferedWriterDemo.java"));  
+          bufw = new BufferedWriter(new FileWriter("E:/BufferedWriterDemo.txt")); 
+          String line;//读缓存和写缓存之间交流的桥梁  
+          while ((line = bufr.readLine()) != null) {  //一行一行读写
+              bufw.write(line);  
+              bufw.newLine();//写文件时，添加换行符。为什么呢?看下面解释。  
+              bufw.flush();  
+          }
+      }catch{
+      		…………
+      }
